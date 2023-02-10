@@ -170,6 +170,7 @@ if [[ -z "${PR_NUMBER}" ]]; then
   PR_NUMBER=$(gh pr view --json number -q .number)
   echo -e "\nRunning: ${COMMAND}"
   URL=$(sh -c "${COMMAND}")
+  PR_NUMBER=$(gh pr view --json number -q .number ${URL})
   # shellcheck disable=SC2181
   if [[ "$?" != "0" ]]; then RET_CODE=1; fi
 else
