@@ -167,6 +167,7 @@ if [[ -z "${PR_NUMBER}" ]]; then
   cat /tmp/template
   # shellcheck disable=SC2016,SC2124
   COMMAND="hub pull-request -b ${TARGET_BRANCH} -h ${SOURCE_BRANCH} --no-edit ${ARG_LIST[@]}"
+  PR_NUMBER=$(gh pr view --json number -q .number)
   echo -e "\nRunning: ${COMMAND}"
   URL=$(sh -c "${COMMAND}")
   # shellcheck disable=SC2181
